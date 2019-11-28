@@ -43,7 +43,27 @@ table2 = [['█','█','█','█','█','█','█','█','█','█','█','�
           ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
           ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█']]
 
-tabuum = table2
+fake = [['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█'],
+          ['█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█']]
+
 
 lado = [' 1 =',' 2 =',' 3 =',' 4 =',' 5 =',' 6 =',' 7 =',' 8 =',' 9 =','10 =','11 =','12 =','13 =','14 =','15 =','16 =','17 =','18 =','19 =','20 =']
 
@@ -51,7 +71,6 @@ xnavios = [1,0,0,0,0]
 ynavios = [1,1,1,1,1]
 
 def print_tab1():
-    
     cont = 0
     print('     1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20')
     print('     |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |')
@@ -61,17 +80,15 @@ def print_tab1():
     cont = 0
     
 def print_tab2():
-    
     cont = 0
     print('     01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20')
     print('     |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |')
-    for linha in tabuum:
+    for linha in fake:
         print(lado[cont],'  '.join(linha))
         cont += 1
     cont = 0
 
 def posiciona_pc():
-
     k = random.randint(1,2)
     a = random.randint(0,15); f = random.randint(0,15)
     b = random.randint(0,16); g = random.randint(0,16)
@@ -180,14 +197,30 @@ def posiciona_pc():
             ynavios[4] = 0
             posiciona_pc()
         else:
-            posiciona_pc()
+            posiciona_pc()   
 
-def atacar():
-
-    print('AGORA É HORA DO ATAQUE! DESTRUA SEU INIMIGO!\n')
-    time.sleep(2)
-    print_tab2()
+def pc_ataca():
     while True:
+        print_tab1()
+        a = random.randint(0,19); b = random.randint(0,19)
+        if table1[a][b] != '█' and table1[a][b] != 'O':
+            table1[a][b] = 'X'
+            print('Míssil do Computador Acertou!')
+            u = random.randint(1,4)
+            if u == 1:
+                while True:
+                    a += 1
+                    
+                
+        if table1[a][b] == '█':
+            table1[a][b] = 'O'
+            print('Míssil do Computador Errou!')
+            break
+    atacar()
+    
+def atacar():
+    while True:
+        print_tab2()
         while True:
             z = str(input('Atacar qual coluna? (1-20): '))
             if z == '1' or z == '2' or z == '3' or z == '4' or z == '5' or z == '6' or z == '7' or z == '8' or z == '9' or z == '10' or z == '11' or z == '12' or z == '13' or z == '14' or z == '15' or z == '16' or z == '17' or z == '18' or z == '19' or z == '20':
@@ -196,8 +229,7 @@ def atacar():
                 break
             else:
                  print('Entrada inválida, escolha 1 a 20, sem espaços ou caracteres especiais.')
-                 time.sleep(2)
-                 atacar()
+                 time.sleep(1)
                  
         while True:
             z = str(input('Atacar qual linha? (1-20): '))
@@ -207,17 +239,21 @@ def atacar():
                 break
             else:
                  print('Entrada inválida, escolha 1 a 20, sem espaços ou caracteres especiais.')
-                 time.sleep(2)
-                 atacar()
-                 
-        if tabuum[z][p] != '█' and tabuum[z][p] != 'O':
-            tabuum[z][p] = 'X'
-            print('Míssil acertou!')
-        elif tabuum[z][p] == '█':
-            print('Missil errou!')
-            table2[z][p] == 'O'
-        else:
-            print('Míssil ja lançado aí!')
+                 time.sleep(1)
+        
+        while True:         
+            if table2[z][p] != '█' and table2[z][p] != 'O':
+                fake[z][p] = 'X'
+                print('Míssil do Jogador Acertou!')
+            
+            if table2[z][p] == '█':
+                fake[z][p] = 'O'
+                print('Míssil do Jogador Errou!')
+                break
+            if table2[z][p] == 'O' and table2 == 'X':   
+                print('Você já lançou aí!')
+    pc_ataca()
+        
     
 def jogando():
     
@@ -237,12 +273,12 @@ def jogando():
                 break
             else:
                 print('Esse navio ja foi posicionado! Tente outro.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
                 
         else:
             print('Entrada inválida, escolha de 1 a 5, sem espaços ou caracteres especiais.')
-            time.sleep(2)
+            time.sleep(1)
             jogo()
     
     while True:
@@ -251,7 +287,7 @@ def jogando():
             break
         else:
             print('Entrada inválida, escolha 1 ou 2, sem espaços ou caracteres especiais.')
-            time.sleep(2)
+            time.sleep(1)
             jogo()
             
     while True:
@@ -262,7 +298,7 @@ def jogando():
             break
         else:
              print('Entrada inválida, escolha 1 a 20, sem espaços ou caracteres especiais.')
-             time.sleep(2)
+             time.sleep(1)
              jogo()
              
     while True:
@@ -273,7 +309,7 @@ def jogando():
             break
         else:
              print('Entrada inválida, escolha 1 a 20, sem espaços ou caracteres especiais.')
-             time.sleep(2)
+             time.sleep(1)
              jogo()
     
     if x == '5' and xnavios[4] == 1:
@@ -281,17 +317,17 @@ def jogando():
             try:
                 if table1[z][p] == '█' and table1[z][(p+1)] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                     
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -301,23 +337,23 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         if y == '2':
             try:
                 if table1[z][p] == '█' and table1[(z+1)][p] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                 
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -327,7 +363,7 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         
     if x == '4' and xnavios[3] == 1:
@@ -335,17 +371,17 @@ def jogando():
             try:
                 if table1[z][p] == '█' and table1[z][(p+1)] == '█' and table1[z][(p+2)] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                     
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -357,23 +393,23 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         if y == '2':
             try:
                 if table1[z][p] == '█' and table1[(z+1)][p] == '█' and table1[(z+2)][p] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                 
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -385,7 +421,7 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         
     if x == '3' and xnavios[2] == 1:
@@ -393,17 +429,17 @@ def jogando():
             try:
                 if table1[z][p] == '█' and table1[z][(p+1)] == '█' and table1[z][(p+2)] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                     
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -415,23 +451,23 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         if y == '2':
             try:
                 if table1[z][p] == '█' and table1[(z+1)][p] == '█' and table1[(z+2)][p] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                                                   
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -443,7 +479,7 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         xnavios[2] = 0
                 
@@ -452,17 +488,17 @@ def jogando():
             try:
                 if table1[z][p] == '█' and table1[z][(p+1)] == '█' and table1[z][(p+2)] == '█' and table1[z][(p+3)] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                                                   
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -476,23 +512,23 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         if y == '2':
             try:
                 if table1[z][p] == '█' and table1[(z+1)][p] == '█' and table1[(z+2)][p] == '█' and table1[(z+3)][p] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                                 
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -506,7 +542,7 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
 
     if x == '1' and xnavios[0] == 1:
@@ -514,17 +550,17 @@ def jogando():
             try:
                 if table1[z][p] == '█' and table1[z][(p+1)] == '█' and table1[z][(p+2)] == '█' and table1[z][(p+3)] == '█' and table1[z][(p+4)] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                                                   
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -540,23 +576,23 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
         if y == '2':
             try:
                 if table1[z][p] == '█' and table1[(z+1)][p] == '█' and table1[(z+2)][p] == '█' and table1[(z+3)][p] == '█' and table1[(z+4)][p] == '█':
                     print('Navio do Jogador posicionado!')
-                    time.sleep(2)
+                    time.sleep(1)
                     print('Navio do Computador posicionando!')
-                    time.sleep(2)
+                    time.sleep(1)
                                                   
                 else:
                     print('\nVocê não pode colocar seu navio. Está colidindo com outro já posicionado! Tente outra vez.')
-                    time.sleep(2)
+                    time.sleep(1)
                     jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
             try:
                 table1[z][p] = x
@@ -572,7 +608,7 @@ def jogando():
                 jogo()
             except:
                 print('Você não pode colocar seu navio aqui! Ele excede os limites do tabuleiro! Tente outra posição conferindo o tamanho do navio e direção.')
-                time.sleep(2)
+                time.sleep(1)
                 jogo()
 
 def jogo():
